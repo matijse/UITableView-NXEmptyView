@@ -13,6 +13,7 @@
 
 static const NSString *NXEmptyViewAssociatedKey = @"NXEmptyViewAssociatedKey";
 static const NSString *NXEmptyViewHideSeparatorLinesAssociatedKey = @"NXEmptyViewHideSeparatorLinesAssociatedKey";
+static const NSString *NXEmptyViewThresholdAssociatedKey = @"NXEmptyViewHThresholdAssociatedKey";
 static const NSString *NXEmptyViewPreviousSeparatorStyleAssociatedKey = @"NXEmptyViewPreviousSeparatorStyleAssociatedKey";
 
 
@@ -87,6 +88,7 @@ void nxEV_swizzle(Class c, SEL orig, SEL new)
     objc_setAssociatedObject(self, &NXEmptyViewHideSeparatorLinesAssociatedKey, hideSeparator, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+@dynamic nxEV_emptyThreshold;
 
 #pragma mark Updating
 
