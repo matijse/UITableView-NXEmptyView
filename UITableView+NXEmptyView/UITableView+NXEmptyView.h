@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) IBOutlet UIView *nxEV_emptyView;
 @property (nonatomic, assign) BOOL nxEV_hideSeparatorLinesWhenShowingEmptyView;
+@property (nonatomic) NSUInteger nxEV_emptyThreshold;
 
 @end
 

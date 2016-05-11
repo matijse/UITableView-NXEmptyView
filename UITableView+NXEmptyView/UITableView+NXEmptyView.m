@@ -52,7 +52,11 @@ void nxEV_swizzle(Class c, SEL orig, SEL new)
     for (NSInteger sectionIndex = 0; sectionIndex < self.numberOfSections; sectionIndex++) {
         numberOfRows += [self numberOfRowsInSection:sectionIndex];
     }
-    return (numberOfRows > 0);
+    NSUInteger threshold = 0;
+    if (self.nxEV_emptyThreshold) {
+        threshold = self.nxEV_emptyThreshold;
+    }
+    return (numberOfRows > threshold);
 }
 
 @dynamic nxEV_emptyView;
