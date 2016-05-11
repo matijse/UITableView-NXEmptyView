@@ -55,7 +55,7 @@ void nxEV_swizzle(Class c, SEL orig, SEL new)
     }
     NSUInteger threshold = 0;
     if (self.nxEV_emptyThreshold) {
-        threshold = self.nxEV_emptyThreshold;
+        threshold = 1;
     }
     return (numberOfRows > threshold);
 }
@@ -89,6 +89,17 @@ void nxEV_swizzle(Class c, SEL orig, SEL new)
 }
 
 @dynamic nxEV_emptyThreshold;
+- (BOOL)nxEV_emptyThreshold
+{
+    NSNumber *hideSeparator = objc_getAssociatedObject(self, &NXEmptyViewThresholdAssociatedKey);
+    return hideSeparator ? [hideSeparator boolValue] : NO;
+}
+
+- (void)setNxEV_emptyThreshold:(BOOL)value
+{
+    NSNumber *hideSeparator = [NSNumber numberWithBool:value];
+    objc_setAssociatedObject(self, &NXEmptyViewThresholdAssociatedKey, hideSeparator, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
 
 #pragma mark Updating
 
